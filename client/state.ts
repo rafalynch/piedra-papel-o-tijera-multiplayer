@@ -1,3 +1,4 @@
+import { listeners } from "process";
 import { rtdb } from "./rtdb";
 
 const API_BASE_URL = "https://piedra-papel-o-tijera.herokuapp.com";
@@ -39,6 +40,12 @@ export const state = {
   },
   resetSubs() {
     this.listeners.length = 0;
+  },
+  unsubscribe(cb) {
+    const newListeners = this.listeners.filter((item) => {
+      item != cb;
+    });
+    this.listeners = newListeners;
   },
   getState() {
     return this.data;
@@ -251,9 +258,6 @@ export const state = {
       .ref("/rooms/" + currentState.currentGame.roomId + "/users/" + identity)
       .update({
         waiting: true,
-      })
-      .then(() => {
-        cb();
       });
   },
   resetMoves(cb?: () => void) {
@@ -316,7 +320,7 @@ export const state = {
         cb();
       });
   },
-  async setPlayerMove(move) {
+  setPlayerMove(move) {
     const currentState = this.getState();
     let identity: any;
     if (
@@ -328,7 +332,7 @@ export const state = {
       identity = "guest";
     }
 
-    await rtdb
+    rtdb
       .ref("/rooms/" + currentState.currentGame.roomId + "/users/" + identity)
       .update({
         currentMove: move,
@@ -336,6 +340,9 @@ export const state = {
   },
   whoWins(selfMove, otherMove) {
     let result = "other";
+    if (otherMove == "") {
+      result = "self";
+    }
     if (selfMove == "piedra" && otherMove == "tijera") {
       result = "self";
     }
@@ -350,7 +357,7 @@ export const state = {
     }
     return result;
   },
-  setResult(result) {
+  setResult(result, cb) {
     const currentState = state.getState();
     if (
       currentState.currentGame.users.owner.userId ==
@@ -376,5 +383,6 @@ export const state = {
         });
       }
     }
+    cb();
   },
 };

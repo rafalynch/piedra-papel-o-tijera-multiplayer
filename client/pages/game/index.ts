@@ -5,10 +5,14 @@ class Game extends HTMLElement {
   constructor() {
     super();
   }
+  rendered = false;
   connectedCallback() {
-    this.render();
+    if (!this.rendered) {
+      this.render();
+    }
   }
   render() {
+    this.rendered = true;
     let freezeClic = true;
 
     window.addEventListener(
@@ -37,6 +41,7 @@ class Game extends HTMLElement {
         newState.currentGame.users.owner.waiting &&
         newState.currentGame.users.guest.waiting
       ) {
+        state.unsubscribe(initContador);
         state.resetWaiting(() => {
           freezeClic = false;
           timerContainer.innerHTML = "Go!";
@@ -48,11 +53,14 @@ class Game extends HTMLElement {
             if (counter < 0) {
               clearInterval(intervalo);
               processGame();
+
               state.resetReady();
               freezeClic = true;
             }
           }, 1000);
         });
+      } else {
+        return;
       }
     }
 
@@ -147,8 +155,8 @@ class Game extends HTMLElement {
       setTimeout(() => {
         const currentState = state.getState();
 
-        let self: any;
-        let other: any;
+        let self: string;
+        let other: string;
         if (
           currentState.currentGame.users.owner.userId ==
           currentState.currentSession.userId
@@ -164,12 +172,11 @@ class Game extends HTMLElement {
         const otherMove = currentState.currentGame.users[other].currentMove;
         const result = state.whoWins(selfMove, otherMove);
 
-        if (self == "owner") {
-          state.setResult(result);
-        }
-        Router.go("/results");
-        freezeClic = false;
-      }, 3050);
+        state.setResult(result, () => {
+          Router.go("/results");
+          freezeClic = false;
+        });
+      }, 3000);
     }
 
     this.appendChild(gameContainer);

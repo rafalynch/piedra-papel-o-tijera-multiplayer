@@ -81,9 +81,9 @@ class Instructions extends HTMLElement {
         playButton.classList.add("btn");
         playButton.innerText = "Jugar!";
         playButton.addEventListener("click", (e) => {
-          state.setWaiting(() => {
-            Router.go("/game");
-          });
+          state.resetSubs();
+          state.setWaiting(() => {});
+          Router.go("/game");
         });
         mensaje.appendChild(playButton);
       } else {
