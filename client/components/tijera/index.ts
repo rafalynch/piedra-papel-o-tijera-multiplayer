@@ -3,8 +3,6 @@ customElements.define(
   class TijeraComp extends HTMLElement {
     constructor() {
       super();
-    }
-    connectedCallback() {
       this.render();
     }
     render() {

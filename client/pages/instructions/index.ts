@@ -28,6 +28,7 @@ class Instructions extends HTMLElement {
     const roomScore = document.createElement("div");
     roomHeaderEl.appendChild(roomScore);
     const roomHeaderInfo = document.createElement("div");
+    roomHeaderInfo.classList.add("room-header-info");
     roomHeaderEl.appendChild(roomHeaderInfo);
 
     const ownerScore = document.createElement("h3");
@@ -86,7 +87,8 @@ class Instructions extends HTMLElement {
         });
         mensaje.appendChild(playButton);
       } else {
-        mensaje.innerHTML = "Esperando que " + oponent.name + " este listo";
+        mensaje.innerHTML =
+          "Esperando que el usuario " + oponent.name + " este conectado";
       }
     }
     renderPlayBtn();
@@ -122,6 +124,9 @@ class Instructions extends HTMLElement {
       .room-header {
         display: flex;
         justify-content: space-between;
+      }
+      .room-header-info {
+        text-align: right;
       }
       h3 {
         margin: 0;

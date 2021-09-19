@@ -3,8 +3,6 @@ customElements.define(
   class PapelComp extends HTMLElement {
     constructor() {
       super();
-    }
-    connectedCallback() {
       this.render();
     }
     render() {
