@@ -8,4 +8,3 @@ admin.initializeApp({
 });
 
 export const firestore = admin.firestore();
-export const rtdb = admin.database();
