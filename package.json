@@ -5,8 +5,9 @@
   "scripts": {
     "parcel:serve": "rm -rf ./server/dist && parcel serve ./client/index.html --dist-dir ./server/dist",
     "build:front": "rm -rf ./server/dist && parcel build ./client/index.html --dist-dir ./server/dist",
-    "build:back": "",
-    "dev": "ts-node ./server/index.ts"
+    "dev": "ts-node ./server/index.ts",
+    "build": "tsc ./server/index.ts",
+    "start": "node ./server/index.js"
   },
   "dependencies": {
     "@types/node": "^16.7.13",
