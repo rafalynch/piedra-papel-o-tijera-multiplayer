@@ -9,6 +9,7 @@ const port = process.env.PORT || 4000;
 
 // Use
 app.use(express.json());
+app.use(cors());
 
 // Coll references
 const usersColRef = firestore.collection("users");
