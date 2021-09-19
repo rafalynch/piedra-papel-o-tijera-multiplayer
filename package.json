@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@parcel/transformer-image": "2.0.0-rc.0",
+    "@parcel/transformer-webmanifest": "2.0.0-rc.0",
     "nodemon": "^2.0.12"
   }
 }
