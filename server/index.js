@@ -4,11 +4,13 @@ var express = require("express");
 var database_1 = require("./database");
 var nanoid = require("nanoid");
 var token = require("rand-token");
+var cors = require("cors");
 // Init express app
 var app = express();
 var port = process.env.PORT || 4000;
 // Use
 app.use(express.json());
+app.use(cors());
 // Coll references
 var usersColRef = database_1.firestore.collection("users");
 var roomsColRef = database_1.firestore.collection("rooms");
