@@ -1,0 +1,26 @@
+{
+  "name": "primera-version",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "parcel:serve": "rm -rf ./server/dist && parcel serve ./client/index.html --dist-dir ./server/dist",
+    "build:front": "rm -rf ./server/dist && parcel build ./client/index.html --dist-dir ./server/dist",
+    "build:back": "",
+    "dev": "ts-node ./server/index.ts"
+  },
+  "dependencies": {
+    "@types/node": "^16.7.13",
+    "@vaadin/router": "^1.7.4",
+    "express": "^4.17.1",
+    "firebase": "8.7.1",
+    "firebase-admin": "^9.11.1",
+    "nanoid": "^3.1.25",
+    "parcel": "^2.0.0-rc.0",
+    "rand-token": "^1.0.1",
+    "typescript": "^4.4.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-image": "2.0.0-rc.0",
+    "nodemon": "^2.0.12"
+  }
+}

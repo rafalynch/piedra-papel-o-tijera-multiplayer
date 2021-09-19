@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background: url("./images/fondo.png") repeat;
+  margin: 0;
+  font-family: "Odibee Sans", "cursive";
+}
+@font-face {
+  font-family: "American Typewriter";
+  src: url("//db.onlinewebfonts.com/t/bf35ddaa105b41dd66cb2eb93424c588.eot");
+  src: url("//db.onlinewebfonts.com/t/bf35ddaa105b41dd66cb2eb93424c588.eot?#iefix")
+      format("embedded-opentype"),
+    url("//db.onlinewebfonts.com/t/bf35ddaa105b41dd66cb2eb93424c588.woff2")
+      format("woff2"),
+    url("//db.onlinewebfonts.com/t/bf35ddaa105b41dd66cb2eb93424c588.woff")
+      format("woff"),
+    url("//db.onlinewebfonts.com/t/bf35ddaa105b41dd66cb2eb93424c588.ttf")
+      format("truetype"),
+    url("//db.onlinewebfonts.com/t/bf35ddaa105b41dd66cb2eb93424c588.svg#American Typewriter")
+      format("svg");
+}
+.btn {
+  font-family: "Odibee Sans", "cursive";
+  color: white;
+  font-size: 35px;
+  background-color: #006cfc;
+  border-radius: 8px;
+  border: solid 10px blue;
+  width: 322px;
+  height: 64px;
+  padding: 5px 0;
+}
+.custom-input {
+  font-family: "Odibee Sans", "cursive";
+  display: block;
+  border: 10px solid;
+  border-color: #182460;
+  border-radius: 10px;
+  width: 322px;
+  height: 64px;
+  font-size: 35px;
+  padding: 5px 3px;
+}
+.custom-input:focus {
+  outline: none;
+}
