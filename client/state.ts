@@ -1,6 +1,6 @@
 import { rtdb } from "./rtdb";
 
-const API_BASE_URL = "http://localhost:4000";
+const API_BASE_URL = "https://piedra-papel-o-tijera.herokuapp.com/";
 
 export const state = {
   data: {
