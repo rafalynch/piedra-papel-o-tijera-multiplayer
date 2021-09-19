@@ -45,7 +45,10 @@ class Room extends HTMLElement {
         `;
       }
 
-      if (state.getState().currentGame.users.guest) {
+      if (
+        state.getState().currentGame.users.guest &&
+        state.getState().currentGame.users.guest.name
+      ) {
         guestScore.innerHTML = `
         ${state.getState().currentGame.users.guest.name} : ${
           state.getState().currentGame.users.guest.wins || 0
@@ -64,13 +67,11 @@ class Room extends HTMLElement {
 
     function renderMensaje() {
       const currentState = state.getState();
-      if (!currentState.currentGame.users.guest) {
-        mensajeContainer.innerHTML = `
-        <h2>Enviale el token a tu oponente</h2>
-        <p>${currentState.currentGame.roomToken}<p>
-        `;
-        return;
-      } else {
+
+      if (
+        currentState.currentGame.users.guest &&
+        currentState.currentGame.users.guest.name
+      ) {
         mensajeContainer.innerHTML = `
         <button class="btn play-btn">Nueva Partida</button>
         `;
@@ -81,6 +82,12 @@ class Room extends HTMLElement {
             });
           });
         });
+      } else {
+        mensajeContainer.innerHTML = `
+          <h2>Enviale el token a tu oponente</h2>
+          <p>${currentState.currentGame.roomToken}<p>
+          `;
+        return;
       }
     }
     renderMensaje();

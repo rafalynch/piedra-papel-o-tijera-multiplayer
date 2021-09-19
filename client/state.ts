@@ -25,7 +25,7 @@ export const state = {
           currentMove: "",
           //isConnected: false,
           waiting: false,
-          name: "Guest",
+          name: "",
           userId: "",
           wins: 0,
         },
