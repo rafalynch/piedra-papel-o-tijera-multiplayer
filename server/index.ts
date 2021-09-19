@@ -2,6 +2,7 @@ import * as express from "express";
 import { firestore, rtdb } from "./database";
 import * as nanoid from "nanoid";
 import * as token from "rand-token";
+import * as cors from "cors";
 
 // Init express app
 const app = express();
